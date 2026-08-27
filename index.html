@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D_OBRA | Reporte Semanal Tresor Amelie</title>
+    <title>D_OBRA | Reporte Semanal Guato Ahumados</title>
     
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -42,23 +42,13 @@
         .card-title { font-size: 0.8rem; letter-spacing: 1.5px; color: var(--text-gray); margin-bottom: 20px; display: block; transform: translateZ(20px); }
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; transform: translateZ(30px); }
         .stat-box { text-align: center; }
-        .stat-box small { font-size: 0.75rem; letter-spacing: 1px; color: var(--text-white); font-weight: 700; display: block; margin-top: 10px; }
-        .ring { width: 85px; height: 85px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto; position: relative; box-shadow: 0 0 15px rgba(0,0,0,0.3); padding: 6px; }
-        .ring-inner { background: #1a1a1a; width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .ring { width: 85px; height: 85px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 10px; position: relative; box-shadow: 0 0 15px rgba(0,0,0,0.3); padding: 6px; }
+        .ring-inner { background: #1a1a1a; width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         
-        .dates-grid { 
-            margin-top: 25px; 
-            padding-top: 20px; 
-            border-top: 1px solid rgba(255,255,255,0.08); 
-            transform: translateZ(25px); 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 15px; 
-        }
-        .date-col { display: flex; flex-direction: column; gap: 4px; }
-        .date-label { font-size: 0.75rem; color: var(--text-gray); }
-        .date-value { font-size: 0.95rem; font-weight: 700; color: var(--text-white); }
-        .date-value.highlight { color: var(--accent-blue); }
+        /* Estilos para la sección de fechas */
+        .dates-box { display: flex; justify-content: space-between; gap: 10px; margin-top: 15px; font-size: 0.75rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px; }
+        .date-item span { display: block; color: var(--text-gray); margin-bottom: 3px; }
+        .date-item strong { color: var(--text-white); font-size: 0.85rem; }
 
         .partida-item { margin-bottom: 15px; transform: translateZ(20px); }
         .partida-header { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px; font-weight: 600; }
@@ -103,7 +93,7 @@
 
         <header class="reveal">
             <h1>Reporte Semanal</h1>
-            <div class="brand-identifier"><span class="brand-juice">Tresor</span> <span class="brand-laab">Amelie</span></div>
+            <div class="brand-identifier"><span class="brand-juice">Guato</span> <span class="brand-laab">Ahumados</span></div>
             <p id="week-label">Semana #0</p>
         </header>
 
@@ -119,15 +109,16 @@
                     <small>PLAN</small>
                 </div>
             </div>
-
-            <div class="dates-grid">
-                <div class="date-col">
-                    <span class="date-label">Entrega Programa</span>
-                    <span class="date-value" id="val-fecha-plan">-</span>
+            
+            <!-- Bloque de Fechas del Proyecto -->
+            <div class="dates-box">
+                <div class="date-item">
+                    <span>Entrega Programa</span>
+                    <strong id="date-program">24 Sep, 2026</strong>
                 </div>
-                <div class="date-col">
-                    <span class="date-label">Entrega Estimada</span>
-                    <span class="date-value highlight" id="val-fecha-ritmo">-</span>
+                <div class="date-item">
+                    <span>Entrega Estimada</span>
+                    <strong id="date-estimated" style="color: var(--accent-blue);">28 Sep, 2026</strong>
                 </div>
             </div>
         </div>
@@ -161,45 +152,52 @@
            PANEL DE CONTROL - EDITA AQUÍ CADA SEMANA
            ========================================== */
         const CONFIG = {
-            proyecto: "Tresor Amelie",
-            semana: "Semana 1",
-            avanceReal: 13,
-            avancePlaneado: 5.71, 
-            fechaPrograma: "09 Oct, 2026", 
-            fechaEstimada: "07 Oct, 2026",
+            proyecto: "Guato Ahumados",
+            semana: "Semana 4",
+            avanceReal: 21,
+            avancePlaneado: 42.5,
+            fechaPrograma: "24 Sep, 2026",
+            fechaEstimada: "28 Sep, 2026",
             telefonoWP: "523311386600", 
-            whatsappMsg: "Hola, tengo una duda general sobre el Reporte Semanal de Tresor Amelie.",
+            whatsappMsg: "Hola, tengo una duda general sobre el Reporte Semanal de Guato Ahumados.",
             
             partidas: [
                 { nombre: "Preliminares", porcentaje: 100 },
-                { nombre: "Acabados", porcentaje: 25 },
-                { nombre: "Instalaciones", porcentaje: 0 },
-                { nombre: "Tablaroca", porcentaje: 0 },
-                { nombre: "Carpintería", porcentaje: 0 },
-                { nombre: "Herrería", porcentaje: 0 }
+                { nombre: "Albañilerías", porcentaje: 52 },
+                { nombre: "Inst. Hidrosanitarias", porcentaje: 41 },
+                { nombre: "Carpintería", porcentaje: 10 },
+                { nombre: "Herrería", porcentaje: 10 },
+                { nombre: "Pintura", porcentaje: 8 },
+                { nombre: "Inst. Eléctricas", porcentaje: 4 }
             ],
             
             realizadas: [
-                "Retiro de mueble fijo con espejo",
-                "Retiro de luminarias y cables",
-                "Retiro de vinil",
-                "Resanes en muros",
-                "Retiro de muebles en planta alta"
+                "Retiro de piso Tecnostep en planta baja",
+                "Demolición en muros para apertura de vanos",
+                "Demolición de muros ligeros de tablaroca",
+                "Elaboración de firme en patio para pendientes",
+                "Retiro y reposición de enjarre en muros"
             ],
             
             pendientes: [
-                { texto: "Ruta Crítica: Aplicación de pintura Comex PRO (en proceso al 60%)", critico: true },
-                { texto: "Ruta Crítica: Canalización para voz y datos", critico: true },
-                { texto: "Muro de tablaroca a dos caras", critico: false },
-                { texto: "Base para maniquíes", critico: false }
+                { texto: "Ruta Crítica: Centro de cargas eléctrico", critico: true },
+                { texto: "Ruta Crítica: Instalación de pisos y azulejos", critico: true },
+                { texto: "Ruta Crítica: Instalaciones en la cocina", critico: true },
+                { texto: "Terminar ranurados y salidas eléctricas", critico: false },
+                { texto: "Aplicación de pintura y recubrimientos", critico: false },
+                { texto: "Suministro e instalación de piso en la cocina", critico: false },
+                { texto: "Elaboración de banca de mampostería en patio", critico: false },
+                { texto: "Conclusión de instalaciones eléctricas", critico: false },
+                { texto: "Colado de tapa de cisterna", critico: false }
             ],
             
             galeria: [
-                { img: "movimiento de lamparas.jpg", caption: "Movimiento de lámparas" },
-                { img: "Pintura de tuberia.jpg", caption: "Pintura de tubería" },
-                { img: "Pintura en losa.jpg", caption: "Pintura en losa" },
-                { img: "Reitiro de luminarias.jpg", caption: "Reitro de luminarias" },
-                { img: "Revision de instalaciones electricas existentes.jpg", caption: "Revisión de instalaciones eléctricas" }
+                { img: "demolicion.jpg", caption: "Demolición" },
+                { img: "firme.jpg", caption: "Firme Patio" },
+                { img: "ranurado.jpg", caption: "Ranurado" },
+                { img: "enjarre.jpg", caption: "Enjarres" },
+                { img: "salida_hidro.jpg", caption: "Inst. Hidráulica" },
+                { img: "limpieza.jpg", caption: "Limpieza" }
             ]
         };
 
@@ -210,8 +208,8 @@
             document.getElementById('week-label').innerText = `${CONFIG.semana} • Proyecto Comercial`;
             document.getElementById('text-real').innerText = `${CONFIG.avanceReal}%`;
             document.getElementById('text-plan').innerText = `${CONFIG.avancePlaneado}%`;
-            document.getElementById('val-fecha-plan').innerText = CONFIG.fechaPrograma;
-            document.getElementById('val-fecha-ritmo').innerText = CONFIG.fechaEstimada;
+            document.getElementById('date-program').innerText = CONFIG.fechaPrograma;
+            document.getElementById('date-estimated').innerText = CONFIG.fechaEstimada;
             document.getElementById('footer-pc').innerText = `${CONFIG.avanceReal}%`;
             document.getElementById('footer-bar').style.width = `${CONFIG.avanceReal}%`;
             document.getElementById('wa-link').href = `https://wa.me/${CONFIG.telefonoWP}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
